@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'ftools'
+require 'fileutils'
 
 def camelize(lower_case_and_underscored_word)
   lower_case_and_underscored_word.to_s.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
@@ -50,9 +50,8 @@ puts "\n\nThank you, building the gem structure now\n"
 ## Directory Structure
 puts "Making directory structure..."
 
-File.makedirs("#{gem_name}/lib/#{gem_name}")
-File.makedirs("#{gem_name}/spec")
-File.makedirs("#{gem_name}/spec/#{gem_name}")
+FileUtils.mkdir_p("#{gem_name}/lib/#{gem_name}")
+FileUtils.mkdir_p("#{gem_name}/spec/#{gem_name}")
 
 ##############################################################
 ## Library Files
